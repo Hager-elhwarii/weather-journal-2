@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Journal</title>
+  </head>
+  <body class="relative">
+    <div id="error" class="hidden">
+      <h1 class="text-yellow-600 font-black text-2xl mx-auto text-center mt-8">
+        Please enter a valid zip code
+      </h1>
+    </div>
+    <main class="flex flex-row justify-center mx-auto my-16 font-mono">
+      <form class="flex flex-col" id="weather-form" method="post">
+        <h1
+          class="mb-12 text-white lg:text-5xl md:text-3xl sm:text-2xl text-xl font-extrabold"
+        >
+          Weather Journal
+        </h1>
+        <input
+          type="text"
+          placeholder="Enter zip code here..."
+          class="p-2 rounded-md w-5/6 mx-auto"
+          id="zip"
+          required
+        />
+        <textarea
+          class="mt-4 p-2 rounded-md w-5/6 mx-auto"
+          id="feelings"
+          cols="25"
+          rows="3"
+          placeholder="what are you feeling today?"
+          required
+        ></textarea>
+        <button
+          class="mt-8 transition duration-300 animate-bounce bg-green-700 hover:bg-blue-700 font-mono text-white font-bold w-1/6 rounded-md py-1 mx-auto"
+          id="generate"
+        >
+          Submit
+        </button>
+      </form>
+      <div class="result">
+        <div
+          id="entryHolder"
+          class="text-yellow-700 font-bold bg-white mt-12 pt-4 pb-4 px-4 rounded-md bg-opacity-25"
+        >
+          <h2 class="mb-6 text-white text-7xl font-bold">Results</h2>
+          <img
+            alt="result__weather-state"
+            class="result__weather-state mx-auto mb-4"
+          />
+          <p class="result__zip"></p>
+          <div id="date"><p class="result__date"></p></div>
+          <div id="temp"><p class="result__temp"></p></div>
+          <div id="content">
+            <p class="result__feeling"></p>
+            <p class="result__desc"></p>
+            <span class="result__location"></span>
+          </div>
+        </div>
+        <div id="">
+          <svg
+            id="back_btn"
+            class="w-12 h-12 text-white mx-auto mt-4 hidden cursor-pointer"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </main>
+
+    <div id="loader" class="hidden"></div>
+    <!-- <footer>FWD Web Development Professional</footer> -->
+    <script type="module" src="/static/client.js"></script>
+  </body>
+</html>
