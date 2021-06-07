@@ -5,5 +5,5 @@
  Just Enter your city's zip and feeling for the day,then hit submit
 
 ## Run:
-`npm i `
-`npm run dev`
+1. `npm i `
+2. `npm run dev`
