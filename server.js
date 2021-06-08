@@ -11,21 +11,19 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('public'))
 
-let data = {}
+let projectData = {}
 const key = process.env.API_KEY
 
-app.get('/data', (_, res) => {
-  res.send(data)
-})
+app.post('/data', postData)
 
-app.post('/data', (req, res) => {
+function postData(req, res) {
   let { zip, feelings } = req.body
   const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=metric&appid=${key}`
 
   fetch(url)
     .then((response) => response.json())
     .then((response) => {
-      data = {
+      projectData = {
         zip,
         feelings,
         temp: response.main.temp,
@@ -38,7 +36,16 @@ app.post('/data', (req, res) => {
       res.send({ status: 'success' })
     })
     .catch(() => res.send({ status: 'error' }))
-})
+}
+
+
+app.get('/data', getData)
+
+function getData(req, res) {
+  res.send(projectData)
+
+}
+
 
 app.listen('4000', () => {
   console.log('server is running on port 4000')
