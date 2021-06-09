@@ -6,5 +6,4 @@
 
 ## Run:
 1. `npm i `
-2. `node server.js`  ---> to run the server on localhost://4000
-2. `npm run dev`     ---> to run client side on localhost://3000
+2. `npm run start`  

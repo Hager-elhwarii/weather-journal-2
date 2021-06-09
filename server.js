@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -9,7 +10,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 let projectData = {}
 const key = process.env.API_KEY
@@ -38,6 +39,9 @@ function postData(req, res) {
     .catch(() => res.send({ status: 'error' }))
 }
 
+app.get('/', (_, res) => {
+  res.sendFile(path.resolve('./dist/index.html'))
+})
 
 app.get('/data', getData)
 
